@@ -40,7 +40,11 @@ try:
 		bssid = input("Please enter the BSSID MAC address: ")
 		channel = input("Please enter the channel of the MAC address: ")
 
-		subprocess.run(["sudo", "airodump-ng", "--bssid", bssid, "--channel", channel, adapter])
+		# The path to the folder navigates until the last dir change
+		# Example, home/cole/airodump it will only go to home/cole and write in there,
+		# If i do home/cole/airodump_output/airodump_output, it will write into the airodump folder then use airodump_ouput
+		# As the name of the capture files.
+		subprocess.run(["sudo", "airodump-ng", "--bssid", bssid, "--channel", channel, '-w', '/home/cole/airdump_output/airdump_output', adapter])
 
 	elif choice == 3:
 		bssid = input("Please enter the BSSID MAC address: ")
